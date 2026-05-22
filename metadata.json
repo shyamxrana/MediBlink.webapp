@@ -1,0 +1,5 @@
+{
+  "name": "MediBlink",
+  "description": "A doctor appointment booking application with patient and admin portals.",
+  "requestFramePermissions": ["microphone"]
+}
