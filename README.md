@@ -168,19 +168,38 @@ If you want, I can scaffold the `server/` folder and create basic models and rou
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
-
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/5a6a0b76-171e-459c-96cd-c3b2a23643b3
-
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+  `npm install`
+2. (Optional) Create a `.env.local` file for environment variables such as `APP_URL`.
 3. Run the app:
-   `npm run dev`
+  `npm run dev`
+
+## Deploy to Vercel
+
+This project is ready to deploy as a static site on Vercel.
+
+1. Push your repository to GitHub, GitLab, or Bitbucket and connect it in the Vercel dashboard.
+2. In Vercel's project settings set the **Build Command** to:
+
+  `npm run vercel-build`
+
+  and the **Output Directory** to:
+
+  `dist`
+
+3. Add any environment variables in the Vercel dashboard (e.g., `APP_URL`).
+4. Trigger a deployment — Vercel will run the build and serve the `dist` folder.
+
+Local test before deploying:
+
+```bash
+npm run clean
+npm run vercel-build
+npm run preview
+```
+
+If you later add server-side APIs, place them under an `api/` or `serverless/` folder and configure Vercel Functions accordingly.

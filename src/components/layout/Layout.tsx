@@ -1,22 +1,20 @@
-import * as React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Calendar, LayoutDashboard, ShieldCheck, LogOut, User as UserIcon, Home, Menu, X, ChevronDown, Stethoscope, FileText } from 'lucide-react';
 import { cn } from '@/utils/cn';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/Button';
-import { useState, useEffect, useRef } from 'react';
+ 
 import { motion, AnimatePresence } from 'motion/react';
 
-import { AIAssistant } from '@/components/AIAssistant';
-
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: any) {
   const location = useLocation();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
-  const userMenuRef = useRef<HTMLDivElement>(null);
+  const userMenuRef = useRef(null as HTMLDivElement | null);
 
   // Handle scroll effect
   useEffect(() => {
@@ -295,7 +293,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         {children}
       </main>
-      <AIAssistant />
     </div>
   );
 }
